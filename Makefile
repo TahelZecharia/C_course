@@ -9,12 +9,12 @@ FLAGS=-g -Wall
 all: loopd recursived loop recursives maindrec maindloop mains
 mains: $(OBJECTS_MAIN) libclassrec.a
 	$(CC) $(FLAGS) -o mains $(OBJECTS_MAIN) libclassrec.a -lm 
-maindloop: $(OBJECTS_MAIN) libclassloop.so
+maindloop: $(OBJECTS_MAIN) libclassloops.so
 	$(CC) $(FLAGS) -o maindloop $(OBJECTS_MAIN) ./libclassloop.so -lm 
 maindrec: $(OBJECTS_MAIN) libclassrec.so
 	$(CC) $(FLAGS) -o maindrec $(OBJECTS_MAIN) ./libclassrec.so -lm
 loop: $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
-	$(AR) -rcs libclassloop.a $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
+	$(AR) -rcs libclassloops.a $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
 recursives: $(OBJECTS_BASIC) $(OBJECTS_REC) 
 	$(AR) -rcs libclassrec.a $(OBJECTS_BASIC) $(OBJECTS_REC) 
 recursived: $(OBJECTS_BASIC) $(OBJECTS_REC)
