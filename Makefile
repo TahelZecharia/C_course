@@ -13,13 +13,17 @@ maindloop: $(OBJECTS_MAIN) libclassloops.so
 	$(CC) $(FLAGS) -o maindloop $(OBJECTS_MAIN) ./libclassloops.so -lm 
 maindrec: $(OBJECTS_MAIN) libclassrec.so
 	$(CC) $(FLAGS) -o maindrec $(OBJECTS_MAIN) ./libclassrec.so -lm
-loops: $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
+loops: libclassloops.a
+libclassloops.a: $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
 	$(AR) -rcs libclassloops.a $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
-recursives: $(OBJECTS_BASIC) $(OBJECTS_REC) 
+recursives: libclassrec.a
+libclassrec.a: $(OBJECTS_BASIC) $(OBJECTS_REC) 
 	$(AR) -rcs libclassrec.a $(OBJECTS_BASIC) $(OBJECTS_REC) 
-recursived: $(OBJECTS_BASIC) $(OBJECTS_REC)
+recursived: libclassrec.so
+libclassrec.so: $(OBJECTS_BASIC) $(OBJECTS_REC)
 	$(CC) -shared -o libclassrec.so $(OBJECTS_BASIC) $(OBJECTS_REC) 
-loopd: $(OBJECTS_BASIC) $(OBJECTS_LOOP)
+loopd: libclassloops.so
+libclassloops.so: $(OBJECTS_BASIC) $(OBJECTS_LOOP)
 	$(CC) -shared -o libclassloops.so $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
 main.o: main.c NumClass.h
 	$(CC) $(FLAGS) -c main.c
