@@ -10,7 +10,7 @@ all: loopd recursived loop recursives maindrec maindloop mains
 mains: $(OBJECTS_MAIN) libclassrec.a
 	$(CC) $(FLAGS) -o mains $(OBJECTS_MAIN) libclassrec.a -lm 
 maindloop: $(OBJECTS_MAIN) libclassloops.so
-	$(CC) $(FLAGS) -o maindloop $(OBJECTS_MAIN) ./libclassloop.so -lm 
+	$(CC) $(FLAGS) -o maindloop $(OBJECTS_MAIN) ./libclassloops.so -lm 
 maindrec: $(OBJECTS_MAIN) libclassrec.so
 	$(CC) $(FLAGS) -o maindrec $(OBJECTS_MAIN) ./libclassrec.so -lm
 loop: $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
@@ -20,7 +20,7 @@ recursives: $(OBJECTS_BASIC) $(OBJECTS_REC)
 recursived: $(OBJECTS_BASIC) $(OBJECTS_REC)
 	$(CC) -shared -o libclassrec.so $(OBJECTS_BASIC) $(OBJECTS_REC) 
 loopd: $(OBJECTS_BASIC) $(OBJECTS_LOOP)
-	$(CC) -shared -o libclassloop.so $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
+	$(CC) -shared -o libclassloops.so $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
 main.o: main.c NumClass.h
 	$(CC) $(FLAGS) -c main.c
 basicClassification.o: basicClassification.c NumClass.h  
