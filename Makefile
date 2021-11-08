@@ -13,7 +13,7 @@ maindloop: $(OBJECTS_MAIN) libclassloops.so
 	$(CC) $(FLAGS) -o maindloop $(OBJECTS_MAIN) ./libclassloops.so -lm 
 maindrec: $(OBJECTS_MAIN) libclassrec.so
 	$(CC) $(FLAGS) -o maindrec $(OBJECTS_MAIN) ./libclassrec.so -lm
-loop: $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
+loops: $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
 	$(AR) -rcs libclassloops.a $(OBJECTS_BASIC) $(OBJECTS_LOOP) 
 recursives: $(OBJECTS_BASIC) $(OBJECTS_REC) 
 	$(AR) -rcs libclassrec.a $(OBJECTS_BASIC) $(OBJECTS_REC) 
